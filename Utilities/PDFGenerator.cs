@@ -92,7 +92,7 @@ namespace PDFGenerator
                     document.Add(time);
                 }
 
-                // convert to a string and test length because Temprature is an int and 0 is a valid response
+                // convert to a string and test length because Temprature is an int and 0 is a valid response;
                 if (current?.Temperature.ToString().Length != 0)
                 {
                     Paragraph temp = new Paragraph($"Temperature: {current?.Temperature}°C").SetFontSize(12);
