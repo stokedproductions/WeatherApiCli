@@ -4,18 +4,19 @@ namespace WeatherService
 {
     public class WeatherService
     {
-
-        // GET API KEY FROM .env file
         private static readonly HttpClient client = new HttpClient();
 
         public static async Task<WeatherData?> GetWeatherDataAsync(string city, string weatherAppApiToken)
         {
-            string url = $"http://api.weatherstack.com/current?access_key={weatherAppApiToken}&query={city}";
+            Console.WriteLine("Getting your weather report from WeatherStack.com");
             
+            string url = $"http://api.weatherstack.com/current?access_key={weatherAppApiToken}&query={city}";
+
             HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            if (responseBody == null) {
+            if (responseBody == null)
+            {
                 Console.WriteLine("There was an error getting the weather data.");
                 Environment.Exit(-1);
             }
@@ -60,7 +61,7 @@ namespace WeatherService
         public int Weather_code { get; set; }
         public string[]? Weather_icons { get; set; }
         public string[]? Weather_descriptions { get; set; }
-        public int  Wind_speed { get; set; }
+        public int Wind_speed { get; set; }
         public int Wind_degree { get; set; }
         public string? Wind_dir { get; set; }
         public int Pressure { get; set; }
